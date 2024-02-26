@@ -1,3 +1,30 @@
+def statement_generator(statement, decor):
+    print(f"\n{decor * 5} {statement} {decor * 5} \n" )
+
+def instructions():
+    print("Instructions are displayed")
+
+
+def num_check(question):
+
+
+    error = "error\n"
+    while True:
+
+        response = input(question).lower()
+        if response == "xxx":
+            return response
+
+        try:
+            response = float(response)
+
+            if 1 <= response: 
+                return response
+            else:
+                print(error)
+        except ValueError:
+            print(error)
+
 distance_dict = {
     "mm" : 1000,
     "cm" : 100,
@@ -24,14 +51,45 @@ mass_dict = {
 }
 
 
+
+
+
+
+
+
+
+
+
+# main routine
+statement_generator("Conversion calculator", "-")  
+want_instructions = input("Press <enter> to read or any key to continue: ")
+    
+if want_instructions == "":
+    instructions()
+
+
 while True:
     # input
     category = input("what category? ")
-    amount = float(input("How much? "))
+
+    
+    
+    
+
+    amount = num_check("How much?")
+    
+
+    if amount == "xxx":
+        break
+
+
     from_unit = input("from unit? ")
     to_unit = input("To unit? ")
 
-    print("-- conversion calc --")
+    
+
+
+
     def distance_calc():
 
         multiply_by = distance_dict[to_unit]
@@ -63,12 +121,14 @@ while True:
 
     if category == "distance":
         print(distance_calc())
+        print()
     elif category == "time":
         print(time_calc())
-
+        print()
     elif category == "mass":
         print(mass_calc())
+        print()
     else:
         print("error")
 
-    
+print("Thank you for using the factors calculator")
